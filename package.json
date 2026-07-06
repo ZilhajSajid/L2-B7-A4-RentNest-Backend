@@ -1,13 +1,44 @@
 {
   "name": "a4-rentnest",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "keywords": [],
+  "homepage": "https://github.com/ZilhajSajid/L2-B7-A4-RentNest-Backend#readme",
+  "bugs": {
+    "url": "https://github.com/ZilhajSajid/L2-B7-A4-RentNest-Backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZilhajSajid/L2-B7-A4-RentNest-Backend.git"
+  },
+  "license": "ISC",
+  "author": "Md Zilhaj Un Noor",
+  "type": "module",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module"
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.1.0",
+    "@types/pg": "^8.20.0",
+    "prisma": "^7.8.0",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "http-status": "^2.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.22.0"
+  }
 }
