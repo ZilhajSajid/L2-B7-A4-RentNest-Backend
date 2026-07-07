@@ -14,3 +14,21 @@ enum PropertyAvailability {
     RENTED
     UNAVAILABLE
 }
+
+enum RentalRequestsStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  ACTIVE
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum PaymentProvider {
+  STRIPE
+}

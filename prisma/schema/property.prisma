@@ -15,6 +15,10 @@ model Property {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
+    rentalRequests RentalRequests[]
+
+    reviews Reviews []
+
 
     @@map("properties")
 }

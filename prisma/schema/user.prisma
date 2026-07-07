@@ -10,6 +10,9 @@ model User {
   updatedAt DateTime   @updatedAt
 
   properties Property[]
+  tenant RentalRequests[]
+
+  reviewsId Reviews[]
 
   @@map("users")
 }
