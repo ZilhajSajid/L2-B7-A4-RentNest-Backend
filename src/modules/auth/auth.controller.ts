@@ -3,6 +3,7 @@ import { catchAsync } from "../../utils/catchAsync";
 import { authService } from "./auth.service";
 import { sendResponse } from "../../utils/sendResponse";
 import httpStatus from "http-status";
+
 const loginUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const payload = req.body;
@@ -28,7 +29,19 @@ const loginUser = catchAsync(
     });
   },
 );
-const getMyProfile = catchAsync(async () => {});
+const getMyProfile = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const myProfile = await authService.getMyProfileFromDB(
+      req.user?.id as string,
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "User Profile fetched successfully!",
+      data: { myProfile },
+    });
+  },
+);
 export const authController = {
   loginUser,
   getMyProfile,
