@@ -10,9 +10,9 @@ enum UserStatus {
 }
 
 enum PropertyAvailability {
-    AVAILABLE
-    RENTED
-    UNAVAILABLE
+  AVAILABLE
+  RENTED
+  UNAVAILABLE
 }
 
 enum RentalRequestsStatus {

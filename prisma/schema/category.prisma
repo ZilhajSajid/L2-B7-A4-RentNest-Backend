@@ -1,9 +1,8 @@
 model Category {
-id String @id @default(uuid())
-name String @db.VarChar(255)
-description String @db.VarChar(255)
-properties Property[]
+  id          String     @id @default(uuid())
+  name        String     @db.VarChar(255)
+  description String     @db.VarChar(255)
+  properties  Property[]
 
-
-@@map("categories")
+  @@map("categories")
 }
