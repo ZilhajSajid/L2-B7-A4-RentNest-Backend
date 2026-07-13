@@ -10,7 +10,17 @@ router.post(
   auth(UserRole.LANDLORD),
   propertyController.createProperties,
 );
-router.get("/", propertyController.getProperties);
+router.get("/properties", propertyController.getProperties);
 router.get("/:id", propertyController.getPropertiesById);
+router.put(
+  "/properties/:id",
+  auth(UserRole.ADMIN, UserRole.LANDLORD),
+  propertyController.updatePropertiesById,
+);
+router.delete(
+  "/properties/:id",
+  auth(UserRole.ADMIN, UserRole.LANDLORD),
+  propertyController.deletePropertyById,
+);
 
 export const propertyRoutes = router;

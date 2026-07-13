@@ -21,7 +21,8 @@ app.get("/", async (req: Request, res: Response) => {
 
 app.use("/api/auth", userRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/properties", propertyRoutes);
+app.use("/api", propertyRoutes);
 app.use("/api", categoryRoutes);
+app.use("/api/landlord", propertyRoutes);
 
 export default app;

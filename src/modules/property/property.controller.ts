@@ -51,8 +51,57 @@ const getPropertiesById = catchAsync(
   },
 );
 
+const updatePropertiesById = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const propertyId = req.params.id;
+    if (!propertyId) {
+      throw new Error("Property Id required");
+    }
+    const payload = req.body;
+    const landlordId = req.user?.id;
+    const role = req.user?.role!;
+    const result = await propertyService.updatePropertiesByIdIntoDB(
+      propertyId as string,
+      payload,
+      landlordId as string,
+      role,
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Property Updated Successfully",
+      data: result,
+    });
+  },
+);
+
+const deletePropertyById = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const propertyId = req.params.id;
+    if (!propertyId) {
+      throw new Error("Property Id required");
+    }
+    const landlordId = req.user?.id;
+    const role = req.user?.role!;
+
+    await propertyService.deletePropertyByIdFromDB(
+      propertyId as string,
+      landlordId as string,
+      role,
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Property deleted successfully",
+      data: null,
+    });
+  },
+);
+
 export const propertyController = {
   createProperties,
   getProperties,
   getPropertiesById,
+  updatePropertiesById,
+  deletePropertyById,
 };
