@@ -50,8 +50,41 @@ const updateRentalRequest = catchAsync(
     });
   },
 );
+
+const getRentals = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const tenantId = req.user?.id;
+    const result = await requestService.getRentalsFromDB(tenantId as string);
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Rental request retrieved successfully.",
+      data: result,
+    });
+  },
+);
+
+const getRentalsById = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const rentalId = req.params.id;
+    const tenantId = req.user?.id;
+    const result = await requestService.getRentalsByIdFromDB(
+      tenantId as string,
+      rentalId as string,
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Single Rental request retrieved successfully.",
+      data: result,
+    });
+  },
+);
+
 export const requestController = {
   getRequests,
   createRentalRequest,
   updateRentalRequest,
+  getRentals,
+  getRentalsById,
 };

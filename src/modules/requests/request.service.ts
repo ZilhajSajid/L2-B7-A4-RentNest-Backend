@@ -71,8 +71,38 @@ const updateRentalRequestToDB = async (
   return transactionResult;
 };
 
+const getRentalsFromDB = async (tenantId: string) => {
+  const result = await prisma.rentalRequests.findMany({
+    where: { tenantId: tenantId },
+    include: {
+      property: {
+        include: { category: true, landlord: { omit: { password: true } } },
+      },
+      payment: true,
+    },
+    orderBy: { createdAt: "desc" },
+  });
+  console.log("tenantId :", tenantId);
+  return result;
+};
+
+const getRentalsByIdFromDB = async (tenantId: string, rentalId: string) => {
+  const result = await prisma.rentalRequests.findUniqueOrThrow({
+    where: { id: rentalId, tenantId },
+    include: {
+      property: {
+        include: { category: true, landlord: { omit: { password: true } } },
+      },
+      payment: true,
+    },
+  });
+  return result;
+};
+
 export const requestService = {
   getRequestsFromDB,
   createRentalRequestToDB,
   updateRentalRequestToDB,
+  getRentalsFromDB,
+  getRentalsByIdFromDB,
 };

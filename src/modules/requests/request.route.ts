@@ -20,4 +20,7 @@ router.patch(
   auth(UserRole.LANDLORD),
   requestController.updateRentalRequest,
 );
+
+router.get("/rentals", auth(UserRole.TENANT), requestController.getRentals);
+router.get("/rentals/:id", auth(UserRole.TENANT), requestController.getRentalsById);
 export const requestRoutes = router;
