@@ -11,7 +11,7 @@ router.post(
   propertyController.createProperties,
 );
 router.get("/properties", propertyController.getProperties);
-router.get("/:id", propertyController.getPropertiesById);
+router.get("/properties/:id", propertyController.getPropertiesById);
 router.put(
   "/properties/:id",
   auth(UserRole.ADMIN, UserRole.LANDLORD),
