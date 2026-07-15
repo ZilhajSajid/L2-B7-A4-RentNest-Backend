@@ -82,7 +82,7 @@ const getRentalsFromDB = async (tenantId: string) => {
     },
     orderBy: { createdAt: "desc" },
   });
-  console.log("tenantId :", tenantId);
+  
   return result;
 };
 

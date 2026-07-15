@@ -10,6 +10,8 @@ import { requestRoutes } from "./modules/requests/request.route";
 import { paymentRoutes } from "./modules/payment/payment.route";
 import { reviewsRoutes } from "./modules/review/review.route";
 import { adminRoutes } from "./modules/admin/admin.route";
+import { notFound } from "./middlewares/notFound";
+import { globalErrorHandler } from "./middlewares/globalErrorHandler";
 
 const app: Application = express();
 
@@ -32,5 +34,7 @@ app.use("/api", requestRoutes);
 app.use("/api", paymentRoutes);
 app.use("/api", reviewsRoutes);
 app.use("/api", adminRoutes);
+app.use(notFound);
+app.use(globalErrorHandler);
 
 export default app;
