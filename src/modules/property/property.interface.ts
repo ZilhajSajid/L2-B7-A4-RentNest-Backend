@@ -18,3 +18,10 @@ export interface IUpdateProperty {
   amenities?: string[];
   categoryId?: string;
 }
+
+export interface IPropertyQuery {
+  location?: string;
+  minPrice?: string;
+  maxPrice?: string;
+  category?: string;
+}
