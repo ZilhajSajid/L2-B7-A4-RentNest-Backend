@@ -96,7 +96,7 @@ const createConfirmPaymentIntoDB = async (sessionId: string) => {
     });
     await tx.rentalRequests.update({
       where: { id: payment.rentalRequestId },
-      data: { status: RentalRequestsStatus.ACTIVE },
+      data: { status: RentalRequestsStatus.COMPLETED },
     });
     await tx.property.update({
       where: { id: payment.rentalRequest.propertyId },
